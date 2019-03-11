@@ -1,25 +1,25 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, Text, Button } from 'react-native';
 
 let songs = [
   {
     recID: 1,
-    track: "Brick",
+    track: "Snot",
     artist: "(Sandy) Alex G"
   },
   {
     recID: 2,
-    track: "Taste",
+    track: "Painting of Blue",
     artist: "Forth Wanderers"
   },
   {
     recID: 3,
     track: "Pristine",
-    artist: "Snail Mail"
+    artist: "Snail"
   }
 ]
 
-export default class LinksScreen extends React.Component {
+export default class MusicScreen extends React.Component {
   constructor() {
     super()
 
@@ -30,13 +30,15 @@ export default class LinksScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Links',
+    title: 'Music Recs',
   };
 
   render() {
 
     let songs = this.state.songs.map(song => {
-      return <Text key={song.recID}> {song.track} </Text>
+      return <Button key={song.recID} title={song.track} onPress={() => this.props.navigation.navigate("MusicDetail", {
+        otherParam: {artist: song.artist, track: song.track}
+      })}/>
     })
     return (
       <ScrollView style={styles.container}>

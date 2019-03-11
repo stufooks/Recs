@@ -5,11 +5,13 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import LibraryScreen from '../screens/LibraryScreen';
 import LinksScreen from '../screens/LinksScreen';
-import OtherScreen from '../screens/MusicScreen'
+import MusicScreen from '../screens/MusicScreen'
+import MusicDetailScreen from '../screens/MusicDetailScreen'
 
 const LibraryStack = createStackNavigator({
   Home: LibraryScreen,
-  Music: OtherScreen,
+  Music: MusicScreen,
+  MusicDetail: MusicDetailScreen,
 });
 
 LibraryStack.navigationOptions = {
