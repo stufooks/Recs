@@ -8,14 +8,14 @@ let songs = [
     artist: "(Sandy) Alex G"
   },
   {
-    recID: 2,
-    track: "Painting of Blue",
-    artist: "Forth Wanderers"
-  },
-  {
     recID: 3,
     track: "Pristine",
-    artist: "Snail"
+    artist: "Snail Mail"
+  },
+  {
+    recID: 4,
+    track: "Space Cowboy",
+    artist: "Kacey Musgrave"
   }
 ]
 
