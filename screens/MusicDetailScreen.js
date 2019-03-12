@@ -47,11 +47,14 @@ export default class MusicDetailScreen extends React.Component {
 
     axios
       .get(
-        "https://api.spotify.com/v1/search?q=artist:"+ artistFirst +"%20track:"+ trackFirst +"&type=track&limit=1&api_key=",
+        "https://api.spotify.com/v1/search?q=artist:" +
+          artistFirst +
+          "%20track:" +
+          trackFirst +
+          "&type=track&limit=1&api_key=",
         { headers: headers }
       )
       .then(res => {
-
         console.log(res.data.tracks.items[0].external_urls.spotify)
 
         this.setState({
@@ -67,7 +70,7 @@ export default class MusicDetailScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: "Your Rec"
+    title: "Rec"
   }
 
   render() {
@@ -76,19 +79,24 @@ export default class MusicDetailScreen extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          <Image
-            style={{
-              width: this.state.images[1].width,
-              height: this.state.images[1].height
-            }}
-            source={{ uri: this.state.images[1].url }}
-          />
-          <Text>{this.state.track}</Text>
-          <Text>{this.state.artist}</Text>
-          <Button
-            title="Open in Spotify"
-            onPress={() => Linking.openURL(this.state.link)}
-          />
+          <View>
+            <Image
+              style={{
+                width: this.state.images[1].width,
+                height: this.state.images[1].height,
+                borderRadius: 8
+              }}
+              source={{ uri: this.state.images[1].url }}
+            />
+          </View>
+          <View style={styles.textArea}>
+            <Text style={styles.title}>{this.state.track}</Text>
+            <Text>{this.state.artist}</Text>
+            <Button
+              title="Open in Spotify"
+              onPress={() => Linking.openURL(this.state.link)}
+            />
+          </View>
         </View>
       )
     }
@@ -98,8 +106,17 @@ export default class MusicDetailScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 10,
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#fff"
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold",
+  }, 
+  textArea: {
+    width: 280,
+    alignItems: "flex-start",
   }
 })
