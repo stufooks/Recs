@@ -34,7 +34,7 @@ export default class MusicDetailScreen extends React.Component {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization:
-        "Bearer BQAUqomKSo6t0Kn2G3f7R9hBPctrYC-MXHedArL3SJ9avoZMtN-aI4c--iBix2SQ4w7JLzFHrTqLKFeLxlo"
+        "Bearer BQBc1h4MVyDJOaLyoQCyMOTNQ-hqhlr-sQLfB-RZxjKuHuhuxffv70QRj8x9kggYTGfcjHFvvpxl0WQ4AHQ"
     }
 
     const otherParam = this.props.navigation.getParam("otherParam", {

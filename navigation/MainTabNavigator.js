@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import LibraryScreen from '../screens/LibraryScreen';
-import LinksScreen from '../screens/LinksScreen';
+import AddScreen from '../screens/AddScreen';
 import MusicScreen from '../screens/MusicScreen'
 import MusicDetailScreen from '../screens/MusicDetailScreen'
 
@@ -28,11 +28,11 @@ LibraryStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const AddStack = createStackNavigator({
+  Links: AddScreen,
 });
 
-LinksStack.navigationOptions = {
+AddStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -44,5 +44,5 @@ LinksStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   LibraryStack,
-  LinksStack,
+  AddStack,
 });
