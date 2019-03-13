@@ -5,8 +5,9 @@ let Utils = {
         try {
             const value = await AsyncStorage.getItem('id');
             if (value !== null) {
-              AsyncStorage.setItem('id', JSON.stringify(value + 1))
-              return value + 1
+              let id = parseInt(value)
+              AsyncStorage.setItem('id', JSON.stringify(id + 1))
+              return id + 1
             }
           } catch (error) {
             console.log(error)
