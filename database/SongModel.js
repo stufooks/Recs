@@ -1,12 +1,30 @@
-import Utils from './Utils';
+// import Utils from "./Utils"
+import Realm from "realm"
 
-class SongModel {
-  constructor(track, artist) {
-    this.id = Utils.genId()
-    this.track = track
-    this.artist = artist
-    this.createdAt = Date.now
+const SongSchema = {
+  name: "Song",
+  properties: {
+    track: "string",
+    artist: "string"
   }
 }
 
-module.exports = SongModel;
+Realm.open({ schema: [SongSchema] })
+  .then(realm => {
+    realm.write(() => {
+      realm.create("Song", {
+        track: "Brick",
+        artist: "(Sandy) Alex G"
+      })
+    })
+
+    realm.write(() => {
+      realm.create("Song", {
+        track: "Pristine",
+        artist: "Snail Mail"
+      })
+    })
+  })
+  .catch(error => {
+    console.log(error)
+  })
