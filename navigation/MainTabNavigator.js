@@ -20,7 +20,7 @@ const LibraryStack = createStackNavigator({
 
 LibraryStack.navigationOptions = {
   tabBarLabel: ({ focused }) => (
-    <Text  style={focused ? {color: "black"} : {color: "grey"}}>Library</Text>
+    <Text style={focused ? {color: "black", marginBottom: 1} : {color: "grey", marginBottom: 1}}>Library</Text>
   ),
   tabBarIcon: ({ focused }) => (
     <LibraryIcon
@@ -35,7 +35,7 @@ const AddStack = createStackNavigator({
 
 AddStack.navigationOptions = {
   tabBarLabel: ({ focused }) => (
-    <Text  style={focused ? {color: "black"} : {color: "grey"}}>Add</Text>
+    <Text style={focused ? {color: "black", marginBottom: 1} : {color: "grey", marginBottom: 1}}>Add</Text>
   ),
   tabBarIcon: ({ focused }) => (
     <AddIcon
