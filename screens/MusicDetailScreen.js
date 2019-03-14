@@ -9,27 +9,27 @@ export default class MusicDetailScreen extends React.Component {
   }
 
   componentDidMount() {
-    // const client_id = "bb2b5363495f4f7ca2c7185c66beef95"
-    // const client_secret = "bdd6239e795b48218ed5f9be4e5550d5"
+  //   const client_id = "bb2b5363495f4f7ca2c7185c66beef95"
+  //   const client_secret = "bdd6239e795b48218ed5f9be4e5550d5"
 
-    // const encoded = base64.encode(client_id + ":" + client_secret)
+  //   const encoded = base64.encode(client_id + ":" + client_secret)
 
-    // const url = "https://accounts.spotify.com/api/token"
-    // const headers = {
-    //   "Authorization": "Basic " + encoded,
-    //   "Content-Type": "application/x-www-form-urlencoded"
-    // }
-    // const data = {
-    //   grant_type: "client_credentials"
-    // }
+  //   const url = "https://accounts.spotify.com/api/token"
+  //   const headers = {
+  //     "Authorization": "Basic " + encoded,
+  //     "Content-Type": "application/x-www-form-urlencoded"
+  //   }
+  //   const data = {
+  //     grant_type: "client_credentials"
+  //   }
 
-    // axios.post('https://accounts.spotify.com/api/token', data, {headers: headers})
-    //   .then(res => {
-    //     console.log(res.token)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
+  //   axios.post('https://accounts.spotify.com/api/token', data, {headers: headers})
+  //     .then(res => {
+  //       console.log(res.token)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
 
   //   axios.request ({
   //     url: 'https://accounts.spotify.com/api/token',
@@ -49,41 +49,36 @@ export default class MusicDetailScreen extends React.Component {
     const headers1 = {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer BQC7UCs5BgYcfp2R2KlYimKuhdPpPS4mICmv-v3cHeGbLMzvUBdYnYsE8-rjnjJatlRGMxSlTvOc_vYV3LI"
+      Authorization: "Bearer BQBC_w-J0q2qBYsEefZN4v2QrF4K4EK2O9j1Vj21aU0MkBP3HCEw_FDdk1gp_6LQYcxTPsY3yO1mF48WnXQ"
     }
 
-    const otherParam = this.props.navigation.getParam("otherParam", {
+    const songProp = this.props.navigation.getParam("songProp", {
       artist: "default",
       track: "default"
     })
 
-    const artistFirst = otherParam.song.artist.split(" ")[0]
-    const trackFirst = otherParam.song.track.split(" ")[0]
+    const artistFirst = songProp.song.artist.split(" ")[0]
+    const trackFirst = songProp.song.track.split(" ")[0]
 
-    axios
-      .get(
-        "https://api.spotify.com/v1/search?q=artist:" +
-          artistFirst +
-          "%20track:" +
-          trackFirst +
-          "&type=track&limit=1&api_key=",
-        { headers: headers1 }
-      )
+    axios.get(
+      "https://api.spotify.com/v1/search?q=artist:" +
+        artistFirst +
+        "%20track:" +
+        trackFirst +
+        "&type=track&limit=1&api_key=",
+      {headers: headers1}
+    )
       .then(res => {
-        console.log(res.data.tracks.items[0].external_urls.spotify)
-    console.log(otherParam)
-
-    this.setState({
-      track: otherParam.song.track,
-      artist: otherParam.song.artist,
-      images: res.data.tracks.items[0].album.images,
-      link: res.data.tracks.items[0].external_urls.spotify
-    })
-    })
-    .catch(err => {
-      console.log(err)
-    })
+        this.setState({
+          track: songProp.song.track,
+          artist: songProp.song.artist,
+          images: res.data.tracks.items[0].album.images,
+          link: res.data.tracks.items[0].external_urls.spotify
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   static navigationOptions = {

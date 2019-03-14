@@ -1,17 +1,16 @@
 import React from "react"
 import {
-  Image,
+
   Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   Button,
   View
 } from "react-native"
 import { WebBrowser } from "expo"
-
 import { MonoText } from "../components/StyledText"
+import axios from 'axios'
 
 export default class LibraryScreen extends React.Component {
   static navigationOptions = {
