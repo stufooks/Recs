@@ -22,7 +22,7 @@ export default class LinksScreen extends React.Component {
     {track: this.state.song,
     artist: this.state.artist})
       .then(res => {
-        console.log(res)
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err)

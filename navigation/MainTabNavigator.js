@@ -1,11 +1,12 @@
 import React from "react"
-import { Platform } from "react-native"
+import { Platform, Text } from "react-native"
 import {
   createStackNavigator,
   createBottomTabNavigator
 } from "react-navigation"
 
-import TabBarIcon from "../components/TabBarIcon"
+import AddIcon from "../components/AddIcon"
+import LibraryIcon from "../components/LibraryIcon"
 import LibraryScreen from "../screens/LibraryScreen"
 import AddScreen from "../screens/AddScreen"
 import MusicScreen from "../screens/MusicScreen"
@@ -18,15 +19,12 @@ const LibraryStack = createStackNavigator({
 })
 
 LibraryStack.navigationOptions = {
-  tabBarLabel: "Library",
+  tabBarLabel: ({ focused }) => (
+    <Text  style={focused ? {color: "black"} : {color: "grey"}}>Library</Text>
+  ),
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <LibraryIcon
       focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? `ios-information-circle${focused ? "" : "-outline"}`
-          : "md-information-circle"
-      }
     />
   )
 }
@@ -36,11 +34,12 @@ const AddStack = createStackNavigator({
 })
 
 AddStack.navigationOptions = {
-  tabBarLabel: "Add",
+  tabBarLabel: ({ focused }) => (
+    <Text  style={focused ? {color: "black"} : {color: "grey"}}>Add</Text>
+  ),
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <AddIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-link" : "md-link"}
     />
   )
 }
