@@ -12,7 +12,7 @@ export default class MusicScreen extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/')
+    axios.get('http://localhost:8000/songs')
       .then(res => {
         this.setState({
           songs: res.data
@@ -31,7 +31,7 @@ export default class MusicScreen extends React.Component {
 
     let songs = this.state.songs.map(song => {
       return <Button key={song.id} title={song.track} onPress={() => this.props.navigation.navigate("MusicDetail", {
-        otherParam: {artist: song.artist, track: song.track}
+        otherParam: {song: song}
       })}/>
     })
     return (

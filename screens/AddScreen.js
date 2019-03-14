@@ -1,36 +1,33 @@
 import React from 'react';
 import { View, StyleSheet, TextInput, Button, AsyncStorage } from 'react-native';
+import axios from 'axios';
 
 export default class LinksScreen extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      song: "Add a song",
-      artist: "Add an artist"
+      song: "",
+      artist: ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   static navigationOptions = {
-    title: 'Links',
+    title: 'Add Recs',
   };
 
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
   handleSubmit() {
-    alert('working')
+    axios.post('http://localhost:8000/songs/new',
+    {track: this.state.song,
+    artist: this.state.artist})
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
-
-  // handleSubmit = async () => {
-  //   try {
-  //     await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // };
 
   render() {
     return (
@@ -38,12 +35,12 @@ export default class LinksScreen extends React.Component {
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({song: text})}
-          value={this.state.song}
+          placeholder="Add a song"
         />
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({artist: text})}
-          value={this.state.artist}
+          placeholder="Add an artist"
         />
         <Button title="Submit" onPress={this.handleSubmit}>
 

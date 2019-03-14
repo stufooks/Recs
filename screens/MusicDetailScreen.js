@@ -16,25 +16,41 @@ export default class MusicDetailScreen extends React.Component {
 
     // const url = "https://accounts.spotify.com/api/token"
     // const headers = {
-    //   Authorization: "Basic " + encoded,
+    //   "Authorization": "Basic " + encoded,
+    //   "Content-Type": "application/x-www-form-urlencoded"
     // }
-    // const body = {
-    //   grant_type: "client_credentials",
-    //   ContentType: "application/x-www-form-urlencoded"
+    // const data = {
+    //   grant_type: "client_credentials"
     // }
-    // axios.post(url, body, {headers: headers})
-    //     .then(res => {
-    //         console.log(res.token)
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
 
-    const headers = {
+    // axios.post('https://accounts.spotify.com/api/token', data, {headers: headers})
+    //   .then(res => {
+    //     console.log(res.token)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+
+  //   axios.request ({
+  //     url: 'https://accounts.spotify.com/api/token',
+  //     method: 'post',
+  //     data: {
+  //       grant_type: "client_credentials"
+  //     },
+  //     headers: {
+  //       Authorization: "Basic " + encoded,
+  //       "Content-Type": "application/x-www-form-urlencoded"
+  //     }
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  // })
+
+    const headers1 = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization:
-        "Bearer BQBc1h4MVyDJOaLyoQCyMOTNQ-hqhlr-sQLfB-RZxjKuHuhuxffv70QRj8x9kggYTGfcjHFvvpxl0WQ4AHQ"
+        "Bearer BQC7UCs5BgYcfp2R2KlYimKuhdPpPS4mICmv-v3cHeGbLMzvUBdYnYsE8-rjnjJatlRGMxSlTvOc_vYV3LI"
     }
 
     const otherParam = this.props.navigation.getParam("otherParam", {
@@ -42,8 +58,8 @@ export default class MusicDetailScreen extends React.Component {
       track: "default"
     })
 
-    const artistFirst = otherParam.artist.split(" ")[0]
-    const trackFirst = otherParam.track.split(" ")[0]
+    const artistFirst = otherParam.song.artist.split(" ")[0]
+    const trackFirst = otherParam.song.track.split(" ")[0]
 
     axios
       .get(
@@ -52,21 +68,22 @@ export default class MusicDetailScreen extends React.Component {
           "%20track:" +
           trackFirst +
           "&type=track&limit=1&api_key=",
-        { headers: headers }
+        { headers: headers1 }
       )
       .then(res => {
         console.log(res.data.tracks.items[0].external_urls.spotify)
+    console.log(otherParam)
 
-        this.setState({
-          track: otherParam.track,
-          artist: otherParam.artist,
-          images: res.data.tracks.items[0].album.images,
-          link: res.data.tracks.items[0].external_urls.spotify
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.setState({
+      track: otherParam.song.track,
+      artist: otherParam.song.artist,
+      images: res.data.tracks.items[0].album.images,
+      link: res.data.tracks.items[0].external_urls.spotify
+    })
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   static navigationOptions = {
@@ -113,10 +130,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: "bold",
-  }, 
+    fontWeight: "bold"
+  },
   textArea: {
     width: 280,
-    alignItems: "flex-start",
+    alignItems: "flex-start"
   }
 })
