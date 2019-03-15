@@ -2,6 +2,7 @@ import React from "react"
 import { StyleSheet, Text, Image, View, Button, Linking } from "react-native"
 import axios from "axios"
 import base64 from "react-native-base64"
+// import request from 'request'
 
 export default class MusicDetailScreen extends React.Component {
   constructor(props) {
@@ -9,42 +10,63 @@ export default class MusicDetailScreen extends React.Component {
   }
 
   componentDidMount() {
-  //   const client_id = "bb2b5363495f4f7ca2c7185c66beef95"
-  //   const client_secret = "bdd6239e795b48218ed5f9be4e5550d5"
+    const client_id = "bb2b5363495f4f7ca2c7185c66beef95"
+    const client_secret = "bdd6239e795b48218ed5f9be4e5550d5"
 
-  //   const encoded = base64.encode(client_id + ":" + client_secret)
+    const encoded = base64.encode(client_id + ":" + client_secret)
 
-  //   const url = "https://accounts.spotify.com/api/token"
-  //   const headers = {
-  //     "Authorization": "Basic " + encoded,
-  //     "Content-Type": "application/x-www-form-urlencoded"
-  //   }
-  //   const data = {
-  //     grant_type: "client_credentials"
-  //   }
+    const url = "https://accounts.spotify.com/api/token"
+    const headers = {
+      'X-Authorization': "Basic " + encoded,
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+    const data = {
+      "grant_type": "client_credentials"
+    }
 
-  //   axios.post('https://accounts.spotify.com/api/token', data, {headers: headers})
-  //     .then(res => {
-  //       console.log(res.token)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
+    // axios.post('https://accounts.spotify.com/api/token', data)
+    //   .then(res => {
+    //     console.log("HERE EEEEEE HERE EEEEE", res)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
 
-  //   axios.request ({
-  //     url: 'https://accounts.spotify.com/api/token',
-  //     method: 'post',
-  //     data: {
-  //       grant_type: "client_credentials"
-  //     },
-  //     headers: {
-  //       Authorization: "Basic " + encoded,
-  //       "Content-Type": "application/x-www-form-urlencoded"
-  //     }
-  // })
-  // .catch(err => {
-  //   console.log(err)
-  // })
+    // fetch('https://accounts.spotify.com/api/token', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Authorization': 'Baisc ' + encoded,
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //   },
+    //   body: JSON.stringify({
+    //     grant_type: 'client_credentials'
+    //   }),
+    // })
+    // // .then((response) => response.json())
+    // .then((responseJson) => {
+    //   console.log(responseJson)
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
+
+    fetch(url, {
+      method: 'post',
+      params: data,
+      headers: { 'Authorization': 'Basic YmIyYjUzNjM0OTVmNGY3Y2EyYzcxODVjNjZiZWVmOTU6YmRkNjIzOWU3OTViNDgyMThlZDVmOWJlNGU1NTUwZDU=',
+      'Content-Type': "application/x-www-form-urlencoded"
+    }
+    })
+    .then(res => {
+      console.log(" ")
+      console.log(" ")
+      console.log(" ")
+      console.log(" ")
+      console.log('HERE HERE HERE', res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 
     const headers1 = {
       Accept: "application/json",

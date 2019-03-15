@@ -18,7 +18,8 @@
     "react-native-base64": "0.0.2",
     "react-native-sqlite-storage": "^3.3.10",
     "react-native-swipeout": "^2.3.6",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",

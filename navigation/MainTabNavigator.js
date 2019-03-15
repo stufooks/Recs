@@ -11,11 +11,15 @@ import LibraryScreen from "../screens/LibraryScreen"
 import AddScreen from "../screens/AddScreen"
 import MusicScreen from "../screens/MusicScreen"
 import MusicDetailScreen from "../screens/MusicDetailScreen"
+import BooksScreen from "../screens/BooksScreen"
+import BookDetailScreen from "../screens/BookDetailScreen"
 
 const LibraryStack = createStackNavigator({
   Home: LibraryScreen,
   Music: MusicScreen,
-  MusicDetail: MusicDetailScreen
+  MusicDetail: MusicDetailScreen,
+  Books: BooksScreen,
+  BookDetail: BookDetailScreen
 })
 
 LibraryStack.navigationOptions = {

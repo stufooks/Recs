@@ -49,7 +49,7 @@ export default class LibraryScreen extends React.Component {
                 // style={styles.button}
                 color="black"
                 title="Books"
-                onPress={() => this.props.navigation.navigate("Music")}
+                onPress={() => this.props.navigation.navigate("Books")}
               />
             </View>
             <Image

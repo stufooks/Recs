@@ -3,7 +3,7 @@ import { View, ListView, ScrollView, StyleSheet, Button, Text, TouchableHighligh
 import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
-export default class MusicScreen extends React.Component {
+export default class BooksScreen extends React.Component {
   constructor(props) {
     super()
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -13,7 +13,7 @@ export default class MusicScreen extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/songs')
+    axios.get('http://localhost:8000/books')
       .then(res => {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(res.data)
@@ -24,8 +24,8 @@ export default class MusicScreen extends React.Component {
       })
   }
 
-  deleteNote(rowData) {
-    axios.delete('http://localhost:8000/songs/delete', {data: {rowData}})
+  deleteBook(rowData) {
+    axios.delete('http://localhost:8000/books/delete', {data: {rowData}})
       .then(res => {
         this.componentDidMount()
       })
@@ -38,7 +38,7 @@ export default class MusicScreen extends React.Component {
     let swipeoutBtns = [{
       text: 'Delete',
       backgroundColor: 'red',
-      onPress: () => { this.deleteNote(rowData) }
+      onPress: () => { this.deleteBook(rowData) }
     }];
     return (
         <View>
@@ -47,20 +47,20 @@ export default class MusicScreen extends React.Component {
           autoClose={true}
           >
             <Button 
-              title={rowData.track} 
-              onPress={() => this.props.navigation.navigate("MusicDetail", {songProp: {song: rowData}})}
+              title={rowData.title}
+              onPress={() => this.props.navigation.navigate("BookDetail", {bookProp: {book: rowData}})}
             />
           </Swipeout>
         </View>
     )
   }
 
-  viewNote(rowData) {
+  viewBook(rowData) {
    
   }
 
   static navigationOptions = {
-    title: 'Music Recs',
+    title: 'Book Recs',
   };
 
   render() {
