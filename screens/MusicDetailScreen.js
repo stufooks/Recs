@@ -50,28 +50,28 @@ export default class MusicDetailScreen extends React.Component {
     //   console.error(error);
     // });
 
-    fetch(url, {
-      method: 'post',
-      params: data,
-      headers: { 'Authorization': 'Basic YmIyYjUzNjM0OTVmNGY3Y2EyYzcxODVjNjZiZWVmOTU6YmRkNjIzOWU3OTViNDgyMThlZDVmOWJlNGU1NTUwZDU=',
-      'Content-Type': "application/x-www-form-urlencoded"
-    }
-    })
-    .then(res => {
-      console.log(" ")
-      console.log(" ")
-      console.log(" ")
-      console.log(" ")
-      console.log('HERE HERE HERE', res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    // fetch(url, {
+    //   method: 'post',
+    //   params: data,
+    //   headers: { 'Authorization': 'Basic BQDDJv8ZgxN-nh5LxccWAkhFI4N5Ar-y6PZppdjyRTFMq9NFqNhp5tKoMYPa-QhMATX1ru4dnskpNP21oPA',
+    //   'Content-Type': "application/x-www-form-urlencoded"
+    // }
+    // })
+    // .then(res => {
+    //   console.log(" ")
+    //   console.log(" ")
+    //   console.log(" ")
+    //   console.log(" ")
+    //   console.log('HERE HERE HERE', res)
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    // })
 
     const headers1 = {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer BQArKX-S25MHDzuEEV2nZEhqb4aEVQmrmLSHXuBqvL_7FtNymVctM_za-5dOLMff3H9Vmf8g__tQJs--I5Y"
+      Authorization: "Bearer BQDDJv8ZgxN-nh5LxccWAkhFI4N5Ar-y6PZppdjyRTFMq9NFqNhp5tKoMYPa-QhMATX1ru4dnskpNP21oPA"
     }
 
     const songProp = this.props.navigation.getParam("songProp", {
@@ -125,8 +125,9 @@ export default class MusicDetailScreen extends React.Component {
           </View>
           <View style={styles.textArea}>
             <Text style={styles.title}>{this.state.track}</Text>
-            <Text>{this.state.artist}</Text>
+            <Text style={styles.artist}>By {this.state.artist}</Text>
             <Button
+              style={styles.link}
               title="Open in Spotify"
               onPress={() => Linking.openURL(this.state.link)}
             />
@@ -149,8 +150,15 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold"
   },
+  artist: {
+    fontSize: 20,
+    paddingBottom: 50,
+  },
   textArea: {
     width: 280,
-    alignItems: "flex-start"
+    paddingTop: 20,
+  },
+  link: {
+    textAlign: "center",
   }
 })
