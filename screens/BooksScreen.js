@@ -41,13 +41,16 @@ export default class BooksScreen extends React.Component {
       onPress: () => { this.deleteBook(rowData) }
     }];
     return (
-        <View>
+        <View style={styles.container}>
           <Swipeout 
+          style={styles.swipe}
           right={swipeoutBtns}
           autoClose={true}
           >
             <Button 
+              color="white"
               title={rowData.title}
+              style={styles.button}
               onPress={() => this.props.navigation.navigate("BookDetail", {bookProp: {book: rowData}})}
             />
           </Swipeout>
@@ -76,7 +79,19 @@ export default class BooksScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    alignItems: "center",
+    paddingTop: 40,
     backgroundColor: '#fff',
   },
+  swipe: {
+    flex: 1,
+    backgroundColor: "#CDB49B",
+    width: 220,
+    borderColor: "grey",
+    borderWidth: 1,
+    borderRadius: 5
+  },
+  button: {
+    marginBottom: 100
+  }
 });
