@@ -10,8 +10,8 @@ export default class MusicDetailScreen extends React.Component {
   }
 
   componentDidMount() {
-    const client_id = "bb2b5363495f4f7ca2c7185c66beef95"
-    const client_secret = "bdd6239e795b48218ed5f9be4e5550d5"
+    const client_id = "bb2b5363495f4f7ca2c7185c76beef953"
+    const client_secret = "bdd6239e795b46218ed5f988e4e5550d5"
 
     const encoded = base64.encode(client_id + ":" + client_secret)
 

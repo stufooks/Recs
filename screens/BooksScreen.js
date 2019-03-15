@@ -13,7 +13,7 @@ export default class BooksScreen extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/books')
+    axios.get('https://evening-reef-23065.herokuapp.com/books')
       .then(res => {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(res.data)
@@ -25,7 +25,7 @@ export default class BooksScreen extends React.Component {
   }
 
   deleteBook(rowData) {
-    axios.delete('http://localhost:8000/books/delete', {data: {rowData}})
+    axios.delete('https://evening-reef-23065.herokuapp.com/books/delete', {data: {rowData}})
       .then(res => {
         this.componentDidMount()
       })

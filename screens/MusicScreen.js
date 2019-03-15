@@ -13,7 +13,7 @@ export default class MusicScreen extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/songs')
+    axios.get('https://evening-reef-23065.herokuapp.com/songs')
       .then(res => {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(res.data)
@@ -25,7 +25,7 @@ export default class MusicScreen extends React.Component {
   }
 
   deleteNote(rowData) {
-    axios.delete('http://localhost:8000/songs/delete', {data: {rowData}})
+    axios.delete('https://evening-reef-23065.herokuapp.com/songs/delete', {data: {rowData}})
       .then(res => {
         this.componentDidMount()
       })
