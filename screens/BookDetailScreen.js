@@ -57,8 +57,8 @@ export default class BookDetailScreen extends React.Component {
           </View>
           <View style={styles.textArea}>
             <Text style={styles.title}>{this.state.title}</Text>
-            <Text>{this.state.author}</Text>
-            <Text>"{this.state.firstSent}"</Text>
+            <Text style={styles.author}>By {this.state.author}</Text>
+            <Text style={styles.firstSent}>"{this.state.firstSent}"</Text>
             <Button
               title="Open on Open Library"
               onPress={() => Linking.openURL(this.state.link)}
@@ -73,17 +73,29 @@ export default class BookDetailScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    justifyContent: "flex-start",
+    paddingTop: 0,
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff"
   },
   title: {
     fontSize: 30,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    paddingBottom: 15,
+    textAlign: "center"
   },
   textArea: {
+    paddingTop: 15,
     width: 280,
-    alignItems: "flex-start"
+    alignItems: "center"
+  },
+  author: {
+    fontSize: 20,
+    textAlign: "center"
+  },
+  firstSent: {
+    paddingTop: 15,
+    width: 250,
+    textAlign: "center"
   }
 })

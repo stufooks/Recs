@@ -41,12 +41,15 @@ export default class MusicScreen extends React.Component {
       onPress: () => { this.deleteNote(rowData) }
     }];
     return (
-        <View>
+        <View style={styles.container}>
           <Swipeout 
+          style={styles.swipe}
           right={swipeoutBtns}
           autoClose={true}
           >
             <Button 
+              style={styles.button}
+              color="white"
               title={rowData.track} 
               onPress={() => this.props.navigation.navigate("MusicDetail", {songProp: {song: rowData}})}
             />
@@ -76,7 +79,19 @@ export default class MusicScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    alignItems: "center",
+    paddingTop: 40,
     backgroundColor: '#fff',
   },
+  swipe: {
+    flex: 1,
+    backgroundColor: "#D97373",
+    width: 220,
+    borderColor: "grey",
+    borderWidth: 1,
+    borderRadius: 5
+  },
+  button: {
+    marginBottom: 100
+  }
 });
