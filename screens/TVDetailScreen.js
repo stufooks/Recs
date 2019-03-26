@@ -24,10 +24,16 @@ export default class TVDetailScreen extends React.Component {
 
     axios.get(`http://api-public.guidebox.com/v2/search?api_key=210874e682f5c3fe74c2320dbe2e1dc646677676&type=${type}&field=title&query=${title}`)
       .then(res => {
-        console.log(res.data.results[0].poster_240x342)
+        if (type == "movie") {
+          var image = res.data.results[0].poster_240x342
+          var link = res.data.results[0].imdb
+        } else {
+          var image = res.data.results[0].artwork_304x171
+          var link = res.data.results[0].imdb_id
+        }
         this.setState({
-          image: res.data.results[0].poster_240x342,
-          link: `https://www.imdb.com/title/${res.data.results[0].imdb}`
+          image: image,
+          link: `https://www.imdb.com/title/${link}`
         })
         })
   }
@@ -40,13 +46,20 @@ export default class TVDetailScreen extends React.Component {
     if (this.state == null) {
       return null
     } else {
+      if (this.state.type == "movie") {
+        var width = 200
+        var height = 300
+      } else {
+        var width = 300
+        var height = 200
+      }
       return (
         <View style={styles.container}>
           <View>
             <Image
               style={{
-                width: 200,
-                height: 300,
+                width: width,
+                height: height,
                 borderRadius: 8
               }}
               source={{ uri: this.state.image }}
@@ -83,14 +96,5 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     width: 280,
     alignItems: "center"
-  },
-  author: {
-    fontSize: 20,
-    textAlign: "center"
-  },
-  firstSent: {
-    paddingTop: 15,
-    width: 250,
-    textAlign: "center"
   }
 })

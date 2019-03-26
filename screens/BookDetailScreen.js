@@ -29,10 +29,6 @@ export default class BookDetailScreen extends React.Component {
           link: `https://openlibrary.org/isbn/${res.data.docs[0].isbn[0]}`
         })
         })
-    // axios.get(`http://openlibrary.org/search.json?title=Snow+Crash`)
-    //   .then(res => {
-    //     console.log(res.data.docs[0].author_name[0])
-    //   })
   }
 
   static navigationOptions = {
