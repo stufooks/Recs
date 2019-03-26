@@ -15,19 +15,21 @@ export default class TVDetailScreen extends React.Component {
     })
 
     var title = tvProp.tv.title
+    var type = tvProp.tv.type
     this.setState({
-      title: title
+      title: title,
+      type: type
     })
+    title = title.replace(/ /g, "%20")
 
-    // axios.get(`http://openlibrary.org/search.json?title=${title}`)
-    //   .then(res => {
-    //     this.setState({
-    //       author: res.data.docs[0].author_name[0],
-    //       firstSent: res.data.docs[0].first_sentence[0],
-    //       image: `http://covers.openlibrary.org/b/isbn/${res.data.docs[0].isbn[0]}-M.jpg`,
-    //       link: `https://openlibrary.org/isbn/${res.data.docs[0].isbn[0]}`
-    //     })
-    //     })
+    axios.get(`http://api-public.guidebox.com/v2/search?api_key=210874e682f5c3fe74c2320dbe2e1dc646677676&type=${type}&field=title&query=${title}`)
+      .then(res => {
+        console.log(res.data.results[0].poster_240x342)
+        this.setState({
+          image: res.data.results[0].poster_240x342,
+          link: `https://www.imdb.com/title/${res.data.results[0].imdb}`
+        })
+        })
   }
 
   static navigationOptions = {
@@ -52,10 +54,8 @@ export default class TVDetailScreen extends React.Component {
           </View>
           <View style={styles.textArea}>
             <Text style={styles.title}>{this.state.title}</Text>
-            <Text style={styles.author}>By {this.state.author}</Text>
-            <Text style={styles.firstSent}>"{this.state.firstSent}"</Text>
             <Button
-              title="Open on Open Library"
+              title="Open on IMDB"
               onPress={() => Linking.openURL(this.state.link)}
             />
           </View>
