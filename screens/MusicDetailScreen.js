@@ -31,47 +31,12 @@ export default class MusicDetailScreen extends React.Component {
     //   .catch(err => {
     //     console.log(err)
     //   })
-
-    // fetch('https://accounts.spotify.com/api/token', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Authorization': 'Baisc ' + encoded,
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   body: JSON.stringify({
-    //     grant_type: 'client_credentials'
-    //   }),
-    // })
-    // // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   console.log(responseJson)
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
-
-    // fetch(url, {
-    //   method: 'post',
-    //   params: data,
-    //   headers: { 'Authorization': 'Basic BQDDJv8ZgxN-nh5LxccWAkhFI4N5Ar-y6PZppdjyRTFMq9NFqNhp5tKoMYPa-QhMATX1ru4dnskpNP21oPA',
-    //   'Content-Type': "application/x-www-form-urlencoded"
-    // }
-    // })
-    // .then(res => {
-    //   console.log(" ")
-    //   console.log(" ")
-    //   console.log(" ")
-    //   console.log(" ")
-    //   console.log('HERE HERE HERE', res)
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
+  
 
     const headers1 = {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer BQDDJv8ZgxN-nh5LxccWAkhFI4N5Ar-y6PZppdjyRTFMq9NFqNhp5tKoMYPa-QhMATX1ru4dnskpNP21oPA"
+      Authorization: "Bearer BQBb-AoB7oQmFWEg39tT5HNGMzVQ_OK8JlI0Mwm51alGV8ENk96YTqOo1KSK3wq6QEX38KQTnC9icCMoyIA"
     }
 
     const songProp = this.props.navigation.getParam("songProp", {

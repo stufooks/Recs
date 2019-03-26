@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   swipe: {
     flex: 1,
     backgroundColor: "#CDB49B",
-    width: 220,
+    width: 250,
     borderColor: "grey",
     borderWidth: 1,
     borderRadius: 5

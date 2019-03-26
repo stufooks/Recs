@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, ListView, Image, StyleSheet, Button, Text, TouchableHighlight, Separator } from 'react-native';
+import { View, ListView, StyleSheet, Button } from 'react-native';
 import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
-export default class MusicScreen extends React.Component {
+export default class TVScreen extends React.Component {
   constructor(props) {
     super()
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -13,7 +13,7 @@ export default class MusicScreen extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://evening-reef-23065.herokuapp.com/songs')
+    axios.get('https://evening-reef-23065.herokuapp.com/tv')
       .then(res => {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(res.data)
@@ -24,8 +24,8 @@ export default class MusicScreen extends React.Component {
       })
   }
 
-  deleteNote(rowData) {
-    axios.delete('https://evening-reef-23065.herokuapp.com/songs/delete', {data: {rowData}})
+  deleteTV(rowData) {
+    axios.delete('https://evening-reef-23065.herokuapp.com/tv/delete', {data: {rowData}})
       .then(res => {
         this.componentDidMount()
       })
@@ -38,43 +38,37 @@ export default class MusicScreen extends React.Component {
     let swipeoutBtns = [{
       text: 'Delete',
       backgroundColor: 'red',
-      onPress: () => { this.deleteNote(rowData) }
+      onPress: () => { this.deleteTV(rowData) }
     }];
     return (
-        <View style={styles.row}>
+        <View style={styles.container}>
           <Swipeout 
           style={styles.swipe}
           right={swipeoutBtns}
           autoClose={true}
           >
-            <Text 
+            <Button 
+              color="white"
+              title={rowData.title}
               style={styles.button}
-              // color="black"
-              // title={rowData.track} 
-              onPress={() => this.props.navigation.navigate("MusicDetail", {songProp: {song: rowData}})}
-            >
-            {rowData.track}
-            </Text>
-          </Swipeout>
-          <Image
-              style={{ width: 25, height: 25 }}
-              source={require("../assets/images/right-arrow.png")}
+              onPress={() => this.props.navigation.navigate("TVDetail", {tvProp: {tv: rowData}})}
             />
+          </Swipeout>
         </View>
     )
   }
 
-  viewNote(rowData) {
+  // viewBook(rowData) {
    
-  }
+  // }
 
   static navigationOptions = {
-    title: 'Music Recs',
+    title: 'TV Recs',
   };
 
   render() {
     return (
-      <ListView style={styles.container}
+      <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
       />
@@ -84,24 +78,20 @@ export default class MusicScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 35,
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 40,
     backgroundColor: '#fff',
   },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingRight: 20,
-    paddingBottom: 15,
-  },
   swipe: {
+    flex: 1,
+    backgroundColor: "#CDB49B",
+    width: 250,
     borderColor: "grey",
-    backgroundColor: "white",
-    width: 310
+    borderWidth: 1,
+    borderRadius: 5
   },
   button: {
-    fontSize: 20,
-    paddingLeft: 20,
-    fontWeight: "bold",
+    marginBottom: 100
   }
 });
