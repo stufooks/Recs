@@ -1,14 +1,11 @@
 import React from "react"
 import {
-  Platform,
   ScrollView,
   StyleSheet,
-  Text,
   Image,
   Button,
   View
 } from "react-native"
-// import { WebBrowser } from "expo"
 
 export default class LibraryScreen extends React.Component {
   static navigationOptions = {
@@ -26,7 +23,6 @@ export default class LibraryScreen extends React.Component {
                 source={require("../assets/images/music-icon.png")}
               />
               <Button
-                // style={styles.button}
                 color="black"
                 title="Music"
                 onPress={() => this.props.navigation.navigate("Music")}
@@ -44,7 +40,6 @@ export default class LibraryScreen extends React.Component {
                 source={require("../assets/images/book-icon.png")}
               />
               <Button
-                // style={styles.button}
                 color="black"
                 title="Books"
                 onPress={() => this.props.navigation.navigate("Books")}
@@ -62,7 +57,6 @@ export default class LibraryScreen extends React.Component {
                 source={require("../assets/images/tv-icon.png")}
               />
               <Button
-                // style={styles.button}
                 color="black"
                 title="Movies and TV"
                 onPress={() => this.props.navigation.navigate("TV")}

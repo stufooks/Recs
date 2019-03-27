@@ -93,7 +93,7 @@ export default class LinksScreen extends React.Component {
   }
 }
 
-var {height, width} = Dimensions.get('window')
+var { width } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container: {

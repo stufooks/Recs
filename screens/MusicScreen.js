@@ -49,8 +49,6 @@ export default class MusicScreen extends React.Component {
           >
             <Text 
               style={styles.button}
-              // color="black"
-              // title={rowData.track} 
               onPress={() => this.props.navigation.navigate("MusicDetail", {songProp: {song: rowData}})}
             >
             {rowData.track}
@@ -62,10 +60,6 @@ export default class MusicScreen extends React.Component {
             />
         </View>
     )
-  }
-
-  viewNote(rowData) {
-   
   }
 
   static navigationOptions = {

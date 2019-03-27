@@ -3,7 +3,7 @@ import { StyleSheet, Text, Image, View, Button, Linking } from "react-native"
 import axios from "axios"
 
 export default class TVDetailScreen extends React.Component {
-  constructor(props) {
+  constructor() {
     super()
   }
 
@@ -14,12 +14,11 @@ export default class TVDetailScreen extends React.Component {
       type: "default"
     })
 
-    var title = tvProp.tv.title
-    var type = tvProp.tv.type
     this.setState({
-      title: title,
-      type: type
+      title: tvProp.tv.title,
+      type: tvProp.tv.type
     })
+
     title = title.replace(/ /g, "%20")
 
     axios.get(`http://api-public.guidebox.com/v2/search?api_key=210874e682f5c3fe74c2320dbe2e1dc646677676&type=${type}&field=title&query=${title}`)

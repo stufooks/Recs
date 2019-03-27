@@ -4,8 +4,9 @@ import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
 export default class TVScreen extends React.Component {
-  constructor(props) {
+  constructor() {
     super()
+    
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
       dataSource: ds.cloneWithRows([])

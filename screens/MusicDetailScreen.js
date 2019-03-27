@@ -10,30 +10,8 @@ export default class MusicDetailScreen extends React.Component {
   }
 
   componentDidMount() {
-    const client_id = "bb2b5363495f4f7ca2c7185c76beef953"
-    const client_secret = "bdd6239e795b46218ed5f988e4e5550d5"
 
-    const encoded = base64.encode(client_id + ":" + client_secret)
-
-    const url = "https://accounts.spotify.com/api/token"
     const headers = {
-      'X-Authorization': "Basic " + encoded,
-      "Content-Type": "application/x-www-form-urlencoded"
-    }
-    const data = {
-      "grant_type": "client_credentials"
-    }
-
-    // axios.post('https://accounts.spotify.com/api/token', data)
-    //   .then(res => {
-    //     console.log("HERE EEEEEE HERE EEEEE", res)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-  
-
-    const headers1 = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: "Bearer BQDGw7Sb2r62_1A-gyGszamrjURniURrx-sMBNd_cFaNgq5XCG3fjP8mmRftgRBO4LNe28FHlQUGEDnFpJQ"
@@ -53,7 +31,7 @@ export default class MusicDetailScreen extends React.Component {
         "%20track:" +
         trackFirst +
         "&type=track&limit=1&api_key=",
-      {headers: headers1}
+      {headers: headers}
     )
       .then(res => {
         this.setState({

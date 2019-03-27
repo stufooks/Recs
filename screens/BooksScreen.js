@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, ListView, ScrollView, StyleSheet, Button, Text, TouchableHighlight, Separator } from 'react-native';
+import { View, ListView, StyleSheet, Button } from 'react-native';
 import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
 export default class BooksScreen extends React.Component {
-  constructor(props) {
+  constructor() {
     super()
+
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
       dataSource: ds.cloneWithRows([])
@@ -26,7 +27,7 @@ export default class BooksScreen extends React.Component {
 
   deleteBook(rowData) {
     axios.delete('https://evening-reef-23065.herokuapp.com/books/delete', {data: {rowData}})
-      .then(res => {
+      .then(() => {
         this.componentDidMount()
       })
       .catch(err => {
@@ -56,10 +57,6 @@ export default class BooksScreen extends React.Component {
           </Swipeout>
         </View>
     )
-  }
-
-  viewBook(rowData) {
-   
   }
 
   static navigationOptions = {

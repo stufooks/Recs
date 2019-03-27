@@ -3,9 +3,6 @@ import { StyleSheet, Text, Image, View, Button, Linking } from "react-native"
 import axios from "axios"
 
 export default class BookDetailScreen extends React.Component {
-  constructor(props) {
-    super()
-  }
 
   componentDidMount() {
 
