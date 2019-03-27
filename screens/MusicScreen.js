@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ListView, Image, StyleSheet, Button, Text, TouchableHighlight, Separator } from 'react-native';
+import { View, ListView, Image, StyleSheet, Dimensions, Button } from 'react-native';
 import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
@@ -47,17 +47,12 @@ export default class MusicScreen extends React.Component {
           right={swipeoutBtns}
           autoClose={true}
           >
-            <Text 
-              style={styles.button}
+            <Button 
+              color="white"
+              title={rowData.track}
               onPress={() => this.props.navigation.navigate("MusicDetail", {songProp: {song: rowData}})}
-            >
-            {rowData.track}
-            </Text>
-          </Swipeout>
-          <Image
-              style={{ width: 25, height: 25 }}
-              source={require("../assets/images/right-arrow.png")}
             />
+          </Swipeout>
         </View>
     )
   }
@@ -76,26 +71,25 @@ export default class MusicScreen extends React.Component {
   }
 }
 
+var { width } = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 35,
+    flex: 1,
+    paddingTop: 25,
     backgroundColor: '#fff',
   },
-  row: {
-    flexDirection: "row",
+  row : {
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingRight: 20,
-    paddingBottom: 15,
+    marginBottom: 8,
   },
   swipe: {
+    flex: 1,
+    backgroundColor: "#97C38D",
     borderColor: "grey",
-    backgroundColor: "white",
-    width: 310
-  },
-  button: {
-    fontSize: 20,
-    paddingLeft: 20,
-    fontWeight: "bold",
+    borderWidth: 1,
+    borderRadius: 5,
+    width: width - 20
   }
-});
+})

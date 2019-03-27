@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ListView, StyleSheet, Button } from 'react-native';
+import { View, ListView, StyleSheet, Button, Dimensions } from 'react-native';
 import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
@@ -42,7 +42,7 @@ export default class BooksScreen extends React.Component {
       onPress: () => { this.deleteBook(rowData) }
     }];
     return (
-        <View style={styles.container}>
+        <View style={styles.row}>
           <Swipeout 
           style={styles.swipe}
           right={swipeoutBtns}
@@ -51,7 +51,6 @@ export default class BooksScreen extends React.Component {
             <Button 
               color="white"
               title={rowData.title}
-              style={styles.button}
               onPress={() => this.props.navigation.navigate("BookDetail", {bookProp: {book: rowData}})}
             />
           </Swipeout>
@@ -65,7 +64,7 @@ export default class BooksScreen extends React.Component {
 
   render() {
     return (
-      <ListView
+      <ListView style={styles.container}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
       />
@@ -73,22 +72,25 @@ export default class BooksScreen extends React.Component {
   }
 }
 
+var { width } = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 25,
     backgroundColor: '#fff',
+  },
+  row : {
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: 8,
   },
   swipe: {
     flex: 1,
     backgroundColor: "#CDB49B",
-    width: 250,
     borderColor: "grey",
     borderWidth: 1,
-    borderRadius: 5
-  },
-  button: {
-    marginBottom: 100
+    borderRadius: 5,
+    width: width - 20
   }
-});
+})

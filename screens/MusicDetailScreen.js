@@ -14,7 +14,7 @@ export default class MusicDetailScreen extends React.Component {
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer BQDGw7Sb2r62_1A-gyGszamrjURniURrx-sMBNd_cFaNgq5XCG3fjP8mmRftgRBO4LNe28FHlQUGEDnFpJQ"
+      Authorization: "Bearer BQA11nbQBylmjqWJhZmKRNoGn2WAkqg_ozAAa_qNvqSfIoehW7Wb49rRHNUtOU282pQVWlXKXobxwgUP7EA"
     }
 
     const songProp = this.props.navigation.getParam("songProp", {
@@ -84,7 +84,7 @@ export default class MusicDetailScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 20,
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#fff"
@@ -100,6 +100,10 @@ const styles = StyleSheet.create({
   textArea: {
     width: 280,
     paddingTop: 20,
+    flex: 2,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center"
   },
   link: {
     textAlign: "center",

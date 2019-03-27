@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, ListView, StyleSheet, Button } from 'react-native';
+import { View, ListView, StyleSheet, Button, Dimensions } from 'react-native';
 import axios from 'axios'
 import Swipeout from 'react-native-swipeout'
 
 export default class TVScreen extends React.Component {
   constructor() {
     super()
-    
+
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     this.state = {
       dataSource: ds.cloneWithRows([])
@@ -42,7 +42,7 @@ export default class TVScreen extends React.Component {
       onPress: () => { this.deleteTV(rowData) }
     }];
     return (
-        <View style={styles.container}>
+        <View style={styles.row}>
           <Swipeout 
           style={styles.swipe}
           right={swipeoutBtns}
@@ -51,7 +51,6 @@ export default class TVScreen extends React.Component {
             <Button 
               color="white"
               title={rowData.title}
-              style={styles.button}
               onPress={() => this.props.navigation.navigate("TVDetail", {tvProp: {tv: rowData}})}
             />
           </Swipeout>
@@ -59,17 +58,13 @@ export default class TVScreen extends React.Component {
     )
   }
 
-  // viewBook(rowData) {
-   
-  // }
-
   static navigationOptions = {
     title: 'TV Recs',
   };
 
   render() {
     return (
-      <ListView
+      <ListView style={styles.container}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
       />
@@ -77,22 +72,25 @@ export default class TVScreen extends React.Component {
   }
 }
 
+var { width } = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 25,
     backgroundColor: '#fff',
+  },
+  row : {
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: 8,
   },
   swipe: {
     flex: 1,
-    backgroundColor: "#CDB49B",
-    width: 250,
+    backgroundColor: "#D97373",
     borderColor: "grey",
     borderWidth: 1,
-    borderRadius: 5
-  },
-  button: {
-    marginBottom: 100
+    borderRadius: 5,
+    width: width - 20
   }
-});
+})

@@ -29,6 +29,7 @@ export default class LinksScreen extends React.Component {
         title: this.state.title,
         author: this.state.by
       }
+      console.log(data)
       var endpoint = "books"
     } else if (type ==  "movie" || type == "show") {
       var data = {

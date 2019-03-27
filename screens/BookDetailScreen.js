@@ -1,6 +1,8 @@
 import React from "react"
-import { StyleSheet, Text, Image, View, Button, Linking } from "react-native"
+import { StyleSheet, Text, Image, View, Button, Linking, Dimensions } from "react-native"
 import axios from "axios"
+
+const win = Dimensions.get('window');
 
 export default class BookDetailScreen extends React.Component {
 
@@ -42,7 +44,7 @@ export default class BookDetailScreen extends React.Component {
             <Image
               style={{
                 width: 200,
-                height: 300,
+                height: 280,
                 borderRadius: 8
               }}
               source={{ uri: this.state.image }}
