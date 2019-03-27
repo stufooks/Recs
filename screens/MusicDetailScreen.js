@@ -36,7 +36,7 @@ export default class MusicDetailScreen extends React.Component {
     const headers1 = {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer BQBb-AoB7oQmFWEg39tT5HNGMzVQ_OK8JlI0Mwm51alGV8ENk96YTqOo1KSK3wq6QEX38KQTnC9icCMoyIA"
+      Authorization: "Bearer BQDGw7Sb2r62_1A-gyGszamrjURniURrx-sMBNd_cFaNgq5XCG3fjP8mmRftgRBO4LNe28FHlQUGEDnFpJQ"
     }
 
     const songProp = this.props.navigation.getParam("songProp", {

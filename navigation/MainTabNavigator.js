@@ -38,7 +38,7 @@ LibraryStack.navigationOptions = {
 }
 
 const AddStack = createStackNavigator({
-  Links: AddScreen
+  Links: AddScreen,
 })
 
 AddStack.navigationOptions = {

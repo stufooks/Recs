@@ -8,9 +8,7 @@ import {
   Button,
   View
 } from "react-native"
-import { WebBrowser } from "expo"
-import { MonoText } from "../components/StyledText"
-import axios from "axios"
+// import { WebBrowser } from "expo"
 
 export default class LibraryScreen extends React.Component {
   static navigationOptions = {
